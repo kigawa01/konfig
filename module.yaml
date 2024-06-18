@@ -1,0 +1,32 @@
+# Have feedback? Share it here https://surveys.jetbrains.com/s3/Amper-feedback-form.
+
+product:
+  type: app
+  platforms: [ jvm ]
+
+
+dependencies:
+  - org.jetbrains.kotlinx:kotlinx-datetime:0.4.0
+  # https://mvnrepository.com/artifact/net.kigawa.kutil/kutil-units
+  - net.kigawa.kutil:kutil-unit:4.4.0:
+      exported: true
+  # https://mvnrepository.com/artifact/net.kigawa.kutil/kutil
+  - net.kigawa.kutil:kutil:2.2.2
+  - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3
+  - org.jetbrains.kotlin:kotlin-reflect
+  - com.charleskorn.kaml:kaml:0.59.0
+
+test-dependencies:
+  - org.jetbrains.kotlin:kotlin-test
+  - org.jetbrains.kotlin:kotlin-test-junit5
+settings:
+  kotlin:
+    languageVersion: 2.0
+
+packaging:
+  - type: fatJar            # specify a type of the package
+#    content: # specify how to lay out the final artifact
+#      include: LICENCE
+
+
+

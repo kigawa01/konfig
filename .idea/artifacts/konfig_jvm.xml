@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="konfig-jvm">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="konfig-jvm.jar">
+      <element id="module-output" name="konfig.jvmMain" />
+    </root>
+  </artifact>
+</component>
