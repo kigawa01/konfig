@@ -1,5 +1,6 @@
 package net.kigawa.konfig
 
+import net.kigawa.konfig.builder.AbstractBuilderHolder
 import net.kigawa.konfig.builder.prj.PrjBuilder
 import net.kigawa.konfig.builder.prj.PrjBuilderBlock
 import net.kigawa.kutil.unitapi.component.container.UnitContainer
@@ -11,10 +12,9 @@ import java.util.logging.Logger
 
 class Konfig(
     private val servicePackage: String,
-) {
+) : AbstractBuilderHolder() {
     private val container = UnitContainer.create()
     private val logger = Logger.getLogger(javaClass.name)
-    private val builders = mutableListOf<PrjBuilder>()
 
     fun generate() {
         logger.info("starting generator")
@@ -24,13 +24,7 @@ class Konfig(
         logger.info("ended generator")
     }
 
-    fun project(builderBlock: PrjBuilder.() -> Unit) {
-        val builder = PrjBuilder()
-        builderBlock.invoke(builder)
-        builders.add(builder)
-    }
-
-    fun project(builderBlock: PrjBuilderBlock) = project(builderBlock.toLambda())
+    fun project(builderBlock: PrjBuilder.() -> Unit) = add("project", { PrjBuilder() }, builderBlock)
 
     private fun initLogger() {
         logger.info("initializing logger")
