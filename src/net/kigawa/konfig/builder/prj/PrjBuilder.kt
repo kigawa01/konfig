@@ -1,4 +1,6 @@
 package net.kigawa.konfig.builder.prj
 
-class PrjBuilder {
+import net.kigawa.konfig.builder.Builder
+
+class PrjBuilder : Builder {
 }

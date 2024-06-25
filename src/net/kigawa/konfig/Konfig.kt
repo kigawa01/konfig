@@ -14,7 +14,7 @@ class Konfig(
 ) {
     private val container = UnitContainer.create()
     private val logger = Logger.getLogger(javaClass.name)
-    private val builder: PrjBuilder = PrjBuilder()
+    private val builders = mutableListOf<PrjBuilder>()
 
     fun generate() {
         logger.info("starting generator")
@@ -22,16 +22,15 @@ class Konfig(
         initContainer()
         container.getUnit(Generator::class.java).generate()
         logger.info("ended generator")
-
     }
 
-    fun builder(builderBlock: PrjBuilder.() -> Unit) = builder(object : PrjBuilderBlock {
-        override fun PrjBuilder.build() = builderBlock()
-    })
-
-    fun builder(builderBlock: PrjBuilderBlock) {
-        builderBlock.apply { builder.build() }
+    fun project(builderBlock: PrjBuilder.() -> Unit) {
+        val builder = PrjBuilder()
+        builderBlock.invoke(builder)
+        builders.add(builder)
     }
+
+    fun project(builderBlock: PrjBuilderBlock) = project(builderBlock.toLambda())
 
     private fun initLogger() {
         logger.info("initializing logger")
