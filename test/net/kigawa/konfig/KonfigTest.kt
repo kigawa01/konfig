@@ -19,7 +19,9 @@ class KonfigTest {
     @Test
     fun generate() {
         konfig.project {
+            file {
 
+            }
         }
         konfig.generate()
     }

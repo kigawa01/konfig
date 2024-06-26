@@ -1,9 +1,8 @@
 package net.kigawa.konfig.builder.file
 
+import net.kigawa.konfig.builder.AbstractBuilderHolder
 import net.kigawa.konfig.builder.Builder
 
-class FileBuilder : Builder {
-    override fun merge(from: Builder) {
-        TODO("Not yet implemented")
-    }
+class FileBuilder : AbstractBuilderHolder(), Builder {
+
 }

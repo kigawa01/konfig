@@ -2,7 +2,6 @@ package net.kigawa.konfig
 
 import net.kigawa.konfig.builder.AbstractBuilderHolder
 import net.kigawa.konfig.builder.prj.PrjBuilder
-import net.kigawa.konfig.builder.prj.PrjBuilderBlock
 import net.kigawa.kutil.unitapi.component.container.UnitContainer
 import net.kigawa.kutil.unitapi.registrar.InstanceRegistrar
 import net.kigawa.kutil.unitapi.registrar.ResourceRegistrar
@@ -24,7 +23,8 @@ class Konfig(
         logger.info("ended generator")
     }
 
-    fun project(builderBlock: PrjBuilder.() -> Unit) = add("project", { PrjBuilder() }, builderBlock)
+    fun project(builderBlock: PrjBuilder.() -> Unit)
+    = add("project", { PrjBuilder() }, builderBlock)
 
     private fun initLogger() {
         logger.info("initializing logger")
